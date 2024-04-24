@@ -1,11 +1,24 @@
 const botoes = document.querySelectorAll('.botao');
-console.log(botoes)
+const abasConteudo = document.querySelectorAll(".aba-conteudo-item")
 
-for (let i=0;i<botoes.length;i++){
-    botoes[i].onclick = function(){
-        for (let j=0; j < botoes.length; j++){
-            botoes[j].classList.remove('ativo');
-        }
-        botoes[i].classList.add('ativo');
+for(let i = 0; i < botoes-length; i++){
+    botoes[i].addEventListener('click', function(){
+        const indice = this.getAttrbute('data-indice');
+
+        for(let j = 0; j < botoes-length; j++){
+            botoes[j].classList.remove['ativo'];
+            abasConteudo[j].remove['ativo'];
     }
+    this.classList.add('ativo');
+    abasConteudo[indice].classList.add('ativo');
+    atualizarContador(abasConteudo[indice]);
+
+    });
+
+}
+
+function atualizarContador(abaConteudo){
+    const contador = abaConteudo.querySelector('.contador')
+    const tempoObjetivo = new Date (abaConteudo.getAttrbute('data-tempo-objetivo'));
+    contador.textContent = calculadoTempo(tempoObjetivo);
 }
